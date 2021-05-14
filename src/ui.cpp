@@ -661,6 +661,7 @@ void UpdateDialog::OnInstall(wxCommandEvent&)
 
 void UpdateDialog::OnRunInstaller(wxCommandEvent&)
 {
+	Show(false);
     if( !ApplicationController::IsReadyToShutdown() )
     {
         wxMessageDialog dlg(this,
@@ -669,6 +670,7 @@ void UpdateDialog::OnRunInstaller(wxCommandEvent&)
                             wxOK | wxOK_DEFAULT | wxICON_EXCLAMATION);
         dlg.SetExtendedMessage(_("Make sure that you don't have any unsaved documents and try again."));
         dlg.ShowModal();
+		Show(true);
         return;
     }
 
@@ -684,6 +686,7 @@ void UpdateDialog::OnRunInstaller(wxCommandEvent&)
             _("Software Update"),
             wxOK | wxOK_DEFAULT | wxICON_EXCLAMATION);
         dlg.ShowModal();
+		Show(true);
     }
     else
     {
